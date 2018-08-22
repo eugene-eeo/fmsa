@@ -21,8 +21,8 @@ All functions are tested with numbers up to `2^128`.
 
 #### `mul(s: int, p: int) -> int`
 
-Returns **s × p**, assuming that **s >> p > 0** (**s** is much larger than **p**,
-and both are positive), although the first assumption doesn't need to hold true.
+Returns **s × p**, assuming that **s >> p ≥ 0** (**s** is much larger than **p**,
+and both are ≥ 0), although the first assumption doesn't need to hold true.
 This is the same signature, guarantee, and assumption made by all `mul_{...}`
 functions except for `mul_ucomb`.
 
