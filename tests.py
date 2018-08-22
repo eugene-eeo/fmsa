@@ -1,3 +1,4 @@
+import os
 import pytest
 from pytest import list_of
 
@@ -7,7 +8,7 @@ from fmsa import *
 options = {
     "min_num": 0,
     "max_num": 2**128 - 1,
-    "ncalls": 15,
+    "ncalls": int(os.environ.get('FMSA_ROUNDS', '10')),
 }
 
 
