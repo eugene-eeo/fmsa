@@ -45,5 +45,6 @@ Using a 4-bit comb, returns **s × uct.p**. Assumes that:
 
 ```sh
 $ pip install -r dev-requirements.txt
-$ py.test tests.py --cov=fmsa
+$ make test
+$ make test_cov
 ```
