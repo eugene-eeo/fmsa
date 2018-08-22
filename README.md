@@ -21,16 +21,17 @@ All functions are tested with numbers up to `2^128`.
 
 #### `mul(s: int, p: int) -> int`
 
-Returns **s × p**, assuming that **s >> p** (**s** is much larger than **p**),
-although this assumption doesn't need to hold true. This is the same signature,
-guarantee, and assumption made by all `mul_{...}` functions except for `mul_ucomb`.
+Returns **s × p**, assuming that **s >> p > 0** (**s** is much larger than **p**,
+and both are positive), although the first assumption doesn't need to hold true.
+This is the same signature, guarantee, and assumption made by all `mul_{...}`
+functions except for `mul_ucomb`.
 
 
 #### `compute_ucomb_table(p: int, n: int) -> UCombTable`
 
 Returns an unsigned lookup table for **p**. Assumptions:
 
- - p ≤ 2<sup>n</sup> - 1
+ - 0 ≤ p ≤ 2<sup>n</sup> - 1
  - n is a multiple of 4
 
 
@@ -38,7 +39,7 @@ Returns an unsigned lookup table for **p**. Assumptions:
 
 Using a 4-bit comb, returns **s × uct.p**. Assumes that:
 
- - s ≤ 2<sup>uct.n</sup> - 1
+ - 0 ≤ s ≤ 2<sup>uct.n</sup> - 1
 
 
 ## Tests

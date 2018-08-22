@@ -3,7 +3,7 @@ from collections import namedtuple
 
 def itoa(i: int) -> list:
     """
-    Converts an integer into a list.
+    Converts a positive integer into a list.
     """
     b = bin(i)[2:]  # remove 0b prefix
     return list(map(int, reversed(b)))
@@ -34,6 +34,8 @@ def mul(s: int, p: int) -> int:
     Multiply two numbers s and p together naively. Assumes that s is big
     and p is small.
     """
+    assert s >= 0
+    assert p >= 0
     r = 0
     for x in reversed(itoa(s)):
         r *= 2
@@ -46,6 +48,8 @@ def mul_w(s: int, p: int) -> int:
     """
     Multiply two numbers s and p using the window method.
     """
+    assert s >= 0
+    assert p >= 0
 
     # convert s into windows of 4
     # e.g. 0001 0010 0011 1011
@@ -78,6 +82,8 @@ def mul_sw(s: int, p: int) -> int:
     """
     Multiply two numbers s and p using the sliding window method.
     """
+    assert s >= 0
+    assert p >= 0
 
     # add 3 more bits so in case the MSB = 1, we have enough
     # space to store 3 more 0s. we want to ignore the extra
@@ -111,6 +117,9 @@ def mul_naf(s: int, p: int) -> int:
     """
     Multiplies s and p by first converting s into non-adjacent form.
     """
+    assert s >= 0
+    assert p >= 0
+
     S = itoa(s) + [0]
     n = len(S)
     for i in range(0, n):
@@ -134,6 +143,9 @@ def mul_ssw(s: int, p: int) -> int:
     """
     Multiplies s and p by first converting s into signed sliding windows form.
     """
+    assert s >= 0
+    assert p >= 0
+
     # similar to mul_sw but we need to add 4 bits because we may
     # propagate a carry into the extra 4th bit.
     S = pad(itoa(s), 4) + [0] * 4
@@ -177,7 +189,7 @@ def compute_ucomb_table(p: int, n: int) -> UCombTable:
     n must be a multiple of 4.
     """
     assert n % 4 == 0
-    assert p <= (2 ** n - 1)
+    assert 0 <= p <= (2 ** n - 1)
 
     p0 = p
     p1 = p * (2 ** (    n//4))
@@ -202,7 +214,7 @@ def mul_ucomb(s: int, uct: UCombTable) -> int:
     """
     n, _, px = uct
 
-    assert s <= (2 ** n - 1)
+    assert 0 <= s <= (2 ** n - 1)
 
     S = pad(itoa(s), n)
     q = n // 4
