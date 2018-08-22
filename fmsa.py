@@ -121,7 +121,7 @@ def mul_naf(s: int, p: int) -> int:
     assert p >= 0
 
     S = itoa(s) + [0]
-    n = len(S)
+    n = len(S) - 1
     for i in range(0, n):
         if S[i] == 1 and S[i+1] == 1:
             S[i] = -1

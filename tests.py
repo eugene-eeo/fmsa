@@ -7,7 +7,7 @@ from fmsa import *
 options = {
     "min_num": 0,
     "max_num": 2**128 - 1,
-    "ncalls": 10,
+    "ncalls": 15,
 }
 
 
