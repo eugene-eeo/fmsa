@@ -177,6 +177,7 @@ def compute_ucomb_table(p: int, n: int) -> UCombTable:
     n must be a multiple of 4.
     """
     assert n % 4 == 0
+    assert p <= (2 ** n - 1)
 
     p0 = p
     p1 = p * (2 ** (    n//4))
